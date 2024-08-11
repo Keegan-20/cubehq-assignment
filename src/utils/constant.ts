@@ -1,0 +1,1 @@
+export const CUSTOMER_TOTAL_ENTRIES_LIMIT = 1000;

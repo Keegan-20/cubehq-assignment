@@ -32,7 +32,7 @@ The project is deployed on Vercel and can be accessed using the following link:
 (https://cubehq-assignment-rosy.vercel.app/)
 
 ## Demo Video Here👇
-[![Watch the Demo video](./src/assets/Screenshots/HeroSection.png)](https://vimeo.com/988366100)
+[![Watch the Demo video](./src/assets/thumbnail_cube.png)](https://vimeo.com/997460741)
 
 ## Snapshots
 #### Initial No Customer Selected Page

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Customer } from '../../types/CustomerList';
 import './CustomerCard.css'
 
@@ -8,12 +8,12 @@ interface CustomerCardProps {
   onSelect: () => void;
 }
 
-  // shorten text function
-  const shortenText = (text: string, maxLength: number) => {
-    return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
-  };
-  
-const CustomerCard: React.FC<CustomerCardProps> = ({ customer, isSelected, onSelect }) => {
+// Shorten text function
+const shortenText = (text: string, maxLength: number) => {
+  return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+};
+
+const CustomerCard: React.FC<CustomerCardProps> = memo(({ customer, isSelected, onSelect }) => {
   return (
     <div
       onClick={onSelect}
@@ -27,6 +27,6 @@ const CustomerCard: React.FC<CustomerCardProps> = ({ customer, isSelected, onSel
       <p>{shortenText(customer.title, 190)}</p>
     </div>
   );
-};
+});
 
 export default CustomerCard;

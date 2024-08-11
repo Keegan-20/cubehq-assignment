@@ -6,6 +6,7 @@ interface CustomerContextType {
   customers: Customer[];
   selectedCustomer: Customer | null;
   loadCustomers: () => void;
+  loadMoreCustomers: () => void;
   selectCustomer: (customer: Customer) => void;
   hasMore: boolean;
   currentPage: number;
@@ -23,7 +24,7 @@ export const useCustomerContext = () => {
 };
 
 export const CustomerProvider = ({ children }: { children: ReactNode }) => {
-  const { customers, loadCustomers, hasMore, currentPage, loading } = useCustomerLoader();
+  const { customers, loadCustomers, loadMoreCustomers, hasMore, currentPage, loading } = useCustomerLoader();
   const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
 
   const selectCustomer = (customer: Customer) => {
@@ -31,7 +32,7 @@ export const CustomerProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <CustomerContext.Provider value={{ customers, selectedCustomer, loadCustomers, selectCustomer, hasMore, currentPage, loading }}>
+    <CustomerContext.Provider value={{ customers, selectedCustomer, loadCustomers, loadMoreCustomers, selectCustomer, hasMore, currentPage, loading }}>
       {children}
     </CustomerContext.Provider>
   );

@@ -11,14 +11,14 @@ export const useCustomerLoader = () => {
 
   const loadCustomers = useCallback(async () => {
     try {
-      setLoading(true)
+      setLoading(true);
       // Calculate the start index and limit for the current page
       const start = (currentPage - 1) * CUSTOMER_DETAILS_PER_PAGE;
       const limit = CUSTOMER_DETAILS_PER_PAGE;
       // Fetch the next batch of customers
       const newCustomers = await fetchCustomers(start, limit);
 
-       // Determine if there are more customers to load
+      // Determine if there are more customers to load
       setHasMore(newCustomers.length === CUSTOMER_DETAILS_PER_PAGE);
 
       // Add only unique customers to the list to avoid duplicates
@@ -30,13 +30,19 @@ export const useCustomerLoader = () => {
 
       // Move to the next page for future loading
       setCurrentPage(prevPage => prevPage + 1);
-      setLoading(false)
+      setLoading(false);
     } catch (error) {
-      setLoading(false)
+      setLoading(false);
       console.error('Error fetching customers:', error);
       console.log({ type: 'FETCH_CUSTOMERS_FAILURE' });
     }
   }, [currentPage]);
 
-  return { customers, loadCustomers, hasMore, currentPage, loading };
+  const loadMoreCustomers = useCallback(async () => {
+    if (!loading && hasMore) {
+      await loadCustomers();
+    }
+  }, [loading, hasMore, loadCustomers]);
+
+  return { customers, loadCustomers, loadMoreCustomers, hasMore, currentPage, loading };
 };

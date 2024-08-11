@@ -24,8 +24,8 @@
   }
   
   .no-customer-selected p {
-    font-size: 15px;
+    color:grey;
+    font-size:1rem;
     font-weight: normal;
-    color: rgba(0, 0, 0, 0.445);
   }
 

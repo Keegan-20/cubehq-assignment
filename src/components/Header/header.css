@@ -1,6 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Gupter:wght@700&display=swap');
+
+
 .header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(226, 224, 224, 0.65);
+    padding:1rem;
+    font-family: "Gupter", serif !important;
+    font-weight: 700;
+    font-style: normal;
   }
   
   .header h1 {

@@ -1,32 +1,23 @@
-// src/App.tsx
-
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useCustomerContext } from './context/CustomerContext';
+import Home from './pages/Home';
 import Header from './components/Header/Header';
-import CustomerCard from './components/CustomerCard/CustomerCard';
-import { Customer } from './types/CustomerList';
 import './App.css';
 
-const App: React.FC = () => {
-  const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
 
-  const handleSelectCustomer = (customer: Customer) => {
-    setSelectedCustomer(customer);
-  };
+const App: React.FC = () => {
+  const { loadCustomers } = useCustomerContext();
+
+
+  useEffect(() => {
+    loadCustomers();
+  }, []);
+
 
   return (
     <div className="app">
-      <Header title="This here is the heading" />
-      <main className="main-content">
-      {customer.map((customer) => (
-        <CustomerCard
-          key={customer.id}
-          customer={customer}
-          isSelected={customer.id === selectedCustomer}
-          onSelect={() => handleSelectCustomer(customer.id)}
-        />
-      ))}
-       
-      </main>
+      <Header title='Customer Details' />
+      <Home />
     </div>
   );
 };
